@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>This is the new homepage</h1>
+
+<form action="{% url 'password' %}">
+    <label for="length">Length: </label>
+    <select name="length">
+        {% for n in options %}
+        {% if n == 12 %}
+        <option value="{{n}}" selected='selected'>{{n}}</option>
+        {% else %}
+        <option value="{{n}}">{{n}}</option>
+        {% endif %}
+        {% endfor %}
+    </select>
+    <br />
+    <input type="checkbox" name="uppercase" />
+    <label for="uppercase">
+        Uppercase
+    </label>
+    <br />
+    <input type="checkbox" name="numbers" />
+    <label for="numbers">
+        Numbers
+    </label>
+    <br />
+    <input type="checkbox" name="special" />
+    <label for="special">
+        Special Characters
+    </label>
+    <br />
+    <input type="submit" value="Generate password" />
+
+</form>
+{% endblock content %}
