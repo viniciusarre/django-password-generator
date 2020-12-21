@@ -1,36 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>This is the new homepage</h1>
+
+<h3 class="mt-4 text-primary">How would you like your password to be created?</h3>
 
 <form action="{% url 'password' %}">
-    <label for="length">Length: </label>
-    <select name="length">
-        {% for n in options %}
-        {% if n == 12 %}
-        <option value="{{n}}" selected='selected'>{{n}}</option>
-        {% else %}
-        <option value="{{n}}">{{n}}</option>
-        {% endif %}
-        {% endfor %}
-    </select>
-    <br />
-    <input type="checkbox" name="uppercase" />
-    <label for="uppercase">
-        Uppercase
-    </label>
-    <br />
-    <input type="checkbox" name="numbers" />
-    <label for="numbers">
-        Numbers
-    </label>
-    <br />
-    <input type="checkbox" name="special" />
-    <label for="special">
-        Special Characters
-    </label>
-    <br />
-    <input type="submit" value="Generate password" />
-
+    <div class="form-group">
+        <label for="length">Length: </label>
+        <select class="form-control" name="length">
+            {% for n in options %}
+            {% if n == 12 %}
+            <option value="{{n}}" selected='selected'>{{n}}</option>
+            {% else %}
+            <option value="{{n}}">{{n}}</option>
+            {% endif %}
+            {% endfor %}
+        </select>
+        <br />
+        <input class="form-check-input" type="checkbox" name="uppercase" />
+        <label class="form-check-label" for="uppercase">
+            Uppercase
+        </label>
+        <br />
+        <input class="form-check-input" type="checkbox" name="numbers" />
+        <label class="form-check-label" for="numbers">
+            Numbers
+        </label>
+        <br />
+        <input class="form-check-input" type="checkbox" name="special" />
+        <label class="form-check-label" for="special">
+            Special Characters
+        </label>
+        <br />
+        <input class="btn-success form-control mt-4" type="submit" value="Generate password" />
+    </div>
 </form>
+
 {% endblock content %}
